@@ -1,7 +1,5 @@
 const { mongo, default: mongoose } = require('mongoose');
 const Post = require('../model/Post');
-const User = require('../model/User');
-const objectId = mongoose.Types.ObjectId;
 
 const getAllPosts = async (req, res) => {
     const posts = await Post.find();
@@ -80,5 +78,3 @@ module.exports = {
     deletePost,
     getPost
 }
-
-//Cast to ObjectId failed for value "undefined" (type string) at path "author" for model "Post"

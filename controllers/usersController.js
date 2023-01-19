@@ -1,5 +1,4 @@
 const User = require('../model/User');
-const Post = require("../model/Post");
 const mongoose = require("mongoose");
 const objectId =  mongoose.Types.ObjectId;
 
@@ -11,9 +10,7 @@ const getAllUsers = async (req, res) => {
 
 const updateUser = async (req, res) => {
     const id = req.params.id;
-    console.log('id', id)
 
-    console.log('theme--------------------', req.body.theme)
     const {theme, image, content, profilePicture} = req.body;
 
     if (!id) {
@@ -29,7 +26,6 @@ const updateUser = async (req, res) => {
     if (theme==="shadow") user.bannerImageShadow = image || user.bannerImageShadow;
     user.profilePicture = profilePicture || user.profilePicture;
     user.bio = content || user.bio;
-
 
     const result = await user.save();
     res.json({"messgae":"user updated"});

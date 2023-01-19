@@ -1,5 +1,3 @@
-const mongoose = require("mongoose");
-const objectId =  mongoose.Types.ObjectId;
 
 const paginate = (model) => {
     return async (req, res, next) => {
@@ -8,7 +6,6 @@ const paginate = (model) => {
         const limit = parseInt(req.query.limit);
         const theme = req.query.theme;
         const isPublic = req.query.public;
-        console.log("isPublic", isPublic);
 
         const startIndex = (page - 1) * limit;
         const endIndex = page * limit;
