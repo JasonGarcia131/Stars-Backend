@@ -1,5 +1,5 @@
 const allowedOrigins = [
-    'https://socialstars.onrender.com'
+    'https://socialstars.onrender.com/'
 ];
 
 module.exports = allowedOrigins;
