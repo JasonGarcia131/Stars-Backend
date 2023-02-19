@@ -15,26 +15,26 @@ const PORT = process.env.PORT || 3500;
 connectDB();
 
 
-app.use(function(req, res, next) {
-    // res.header("Access-Control-Allow-Origin", "*");
-    const allowedOrigins = [  'https://socialstars.onrender.com',
-    'http://socialstars.onrender.com',
-];
-    const origin = req.headers.origin;
-    if (allowedOrigins.includes(origin)) {
-         res.setHeader('Access-Control-Allow-Origin', origin);
-    }
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-    res.header("Access-Control-Allow-credentials", true);
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, UPDATE");
-    next();
-  });
+// app.use(function(req, res, next) {
+//     // res.header("Access-Control-Allow-Origin", "*");
+//     const allowedOrigins = [  'https://socialstars.onrender.com',
+//     'http://socialstars.onrender.com',
+// ];
+//     const origin = req.headers.origin;
+//     if (allowedOrigins.includes(origin)) {
+//          res.setHeader('Access-Control-Allow-Origin', origin);
+//     }
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+//     res.header("Access-Control-Allow-credentials", true);
+//     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, UPDATE");
+//     next();
+//   });
 // Handle options credentials check - before CORS!
 // and fetch cookies credentials requirement
-// app.use(credentials);
+app.use(credentials);
 
 // Cross Origin Resource Sharing
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 // built-in middleware to handle urlencoded form data
 
@@ -57,7 +57,6 @@ app.use('/refresh', require('./routes/refresh'));
 app.use('/logout', require('./routes/logout'));
 app.use('/feedback', require('./routes/feedback'));
 app.use('/posts', require('./routes/api/posts'));
-
 app.use('/users', require('./routes/api/users'));
 
 
