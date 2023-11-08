@@ -12,7 +12,7 @@ const paginate = (model) => {
 
         const results = {};
 
-        const total = await model.countDocuments({ author: id, theme: theme }).populate('author').exec();
+        const total = await model.countDocuments({ author: id, theme: theme }).exec();
 
         if (endIndex < total) {
             results.next = {
@@ -29,8 +29,10 @@ const paginate = (model) => {
         }
         try {
                
-                if(isPublic === "true")  results.results = await model.find({ author: id, theme: theme, isPrivate: false }).sort({createdAt: -1 }).limit(limit).skip(startIndex).populate('author').exec();
-                if(isPublic === "false")  results.results = await model.find({ author: id, theme: theme }).sort({createdAt: -1 }).limit(limit).skip(startIndex).populate('author').exec();
+                // if(isPublic === "true")  results.results = await model.find({ author: id, theme: theme, isPrivate: false }).sort({createdAt: -1 }).limit(limit).skip(startIndex).populate('author').exec();
+                if(isPublic === "true")  results.results = await model.find({ author: id, theme: theme, isPrivate: false }).sort({createdAt: -1 }).limit(limit).skip(startIndex).exec();
+                // if(isPublic === "false")  results.results = await model.find({ author: id, theme: theme }).sort({createdAt: -1 }).limit(limit).skip(startIndex).populate('author').exec();
+                if(isPublic === "false")  results.results = await model.find({ author: id, theme: theme }).sort({createdAt: -1 }).limit(limit).skip(startIndex).exec();
                 results.total = total
                 
                 res.paginatedResults = results

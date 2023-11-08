@@ -3,8 +3,6 @@ const Feedback = require("../model/Feedback");
 const createFeedback = async (req, res) => {
 
     const feedback = req.body;
-
-    console.log("Feedback", feedback);
     
     if(feedback.length === 0) res.status(400).json({ 'message': 'Feedback is required.' });
     
