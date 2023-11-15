@@ -34,10 +34,8 @@ const paginate = (model) => {
                 // if(isPublic === "false")  results.results = await model.find({ author: id, theme: theme }).sort({createdAt: -1 }).limit(limit).skip(startIndex).populate('author').exec();
                 if(isPublic === "false")  results.results = await model.find({ author: id, theme: theme }).sort({createdAt: -1 }).limit(limit).skip(startIndex).exec();
                 results.total = total
-                
-                res.paginatedResults = results
+                res.paginatedResults = results;
                 next();
-
         } catch (e) {
             res.status(500).json({ message: e.message })
         }

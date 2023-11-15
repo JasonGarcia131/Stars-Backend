@@ -12,7 +12,6 @@ const updateUser = async (req, res) => {
     const id = req.params.id;
 
     const {theme, image, content, profilePicture} = req.body;
-
     if (!id) {
         return res.status(400).json({ 'message': 'ID parameter is required.' });
     }
